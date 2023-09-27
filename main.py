@@ -10,7 +10,7 @@ screen_h = pygame.display.Info().current_h
 pygame.display.set_caption("2D Shooter")
 
 # define fonts
-font = pygame.font.SysFont("vladimirscript", 30)
+font = pygame.font.SysFont("CASTELLAR", 30)
 for x in pygame.font.get_fonts():
     print(x)
 
@@ -29,18 +29,10 @@ def rand_color():
 
 run = True
 while run:
-    i, j = 0, 0
-    for font_name in pygame.font.get_fonts():
-        font = pygame.font.SysFont(font_name, 20)
-        draw_text(font_name, font, text_color, i, j)
-        j += 15
-        if j >= screen_h - 15:
-            j = 0
-            i += 190
-    #draw_text("cool game", font, text_color, 0, 0)
-    #draw_text("cool game", font, text_color, 0, 15)
-    #draw_text("cool game", font, text_color, 120, 0)
-    # draw_text(str(random.randint(0,250)), font, text_color, random.randint(0,screen_w), random.randint(0,screen_h))
+    draw_text("cool game", font, text_color, 0, 0)
+    draw_text("cool game", font, text_color, 0, 15)
+    draw_text("cool game", font, text_color, 120, 0)
+    draw_text(str(random.randint(0,255)), font, text_color, random.randint(0,screen_w), random.randint(0,screen_h))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
