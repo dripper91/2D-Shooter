@@ -1,6 +1,6 @@
 import pygame
 import random
-import player
+from player import *
 # push test
 
 pygame.init()
@@ -13,8 +13,6 @@ pygame.display.set_caption("2D Shooter")
 
 # define fonts
 font = pygame.font.SysFont("CASTELLAR", 30)
-for x in pygame.font.get_fonts():
-    print(x)
 
 # define colors
 text_color = (255, 255, 255)
@@ -41,7 +39,9 @@ while run:
             if event.key == pygame.K_ESCAPE:
                 run = False
 
-
+    window.fill((0,0,0))
+    visible_sprites.draw(window)
+    visible_sprites.update()
 
     pygame.display.update()
     clock.tick(60)
