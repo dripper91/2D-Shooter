@@ -1,5 +1,6 @@
 import pygame
 import random
+from player import *
 # push test
 
 pygame.init()
@@ -12,8 +13,6 @@ pygame.display.set_caption("2D Shooter")
 
 # define fonts
 font = pygame.font.SysFont("CASTELLAR", 30)
-for x in pygame.font.get_fonts():
-    print(x)
 
 # define colors
 text_color = (255, 255, 255)
@@ -28,19 +27,21 @@ def rand_color():
     b = random.randint(0,255)
     return (r,g,b)
 
+visible_sprites = pygame.sprite.Group()
+player = Player(0, 0, [visible_sprites])
+
 run = True
 while run:
-    draw_text("cool game", font, text_color, 0, 0)
-    draw_text("cool game", font, text_color, 0, 15)
-    draw_text("cool game", font, text_color, 120, 0)
-    draw_text(str(random.randint(0,255)), font, text_color, random.randint(0,screen_w), random.randint(0,screen_h))
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 run = False
+
+    window.fill((0,0,0))
+    visible_sprites.draw(window)
+    visible_sprites.update()
 
     pygame.display.update()
     clock.tick(60)
