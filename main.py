@@ -1,5 +1,6 @@
 import pygame
 import random
+import player
 # push test
 
 pygame.init()
@@ -28,19 +29,19 @@ def rand_color():
     b = random.randint(0,255)
     return (r,g,b)
 
+visible_sprites = pygame.sprite.Group()
+player = Player(0, 0, [visible_sprites])
+
 run = True
 while run:
-    draw_text("cool game", font, text_color, 0, 0)
-    draw_text("cool game", font, text_color, 0, 15)
-    draw_text("cool game", font, text_color, 120, 0)
-    draw_text(str(random.randint(0,255)), font, text_color, random.randint(0,screen_w), random.randint(0,screen_h))
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 run = False
+
+
 
     pygame.display.update()
     clock.tick(60)
